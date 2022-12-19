@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=IE9">
+    <meta charset="utf-8">
+    <title>post journal</title>
+    <hta:application
+        id="thisHTA"
+        applicationname="Post Journal"
+        icon=""
+        singleinstance="yes"
+        showintaskbar="no"
+        caption="no"
+        border="none"
+        innerborder="no"
+        navigable="yes"
+    />
+    <script>
+        var width = 540;
+        var height = 180;
+        window.onload = function() {
+            // ウィンドウサイズ設定
+            window.resizeTo(width, height);
+            window.moveTo(
+                (window.screen.width - width) / 2,
+                (window.screen.height - height) / 2
+            );
+            // ドラッグ可能に
+            var dflag = false;
+            var posX, posY;
+            with (document) {
+                onmousedown = function () { dflag = true; posX = event.clientX; posY = event.clientY; }
+                onmouseup = function () { dflag = false }
+                onmousemove = function () { if (dflag) { window.moveTo(event.screenX - posX, event.screenY - posY) } }
+            }
+            // Always On Top (Using Excel)
+            // http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12151482357
+            try {
+                var excel = new ActiveXObject("Excel.Application");
+                var hwnd = excel.ExecuteExcel4Macro("CALL(\"user32\", \"FindWindowA\", \"JCC\", \"HTML Application Host Window Class\", \"" + document.title + "\")");
+                excel.ExecuteExcel4Macro("CALL(\"user32\", \"SetWindowPos\", \"JJJJJJJJ\", " + hwnd + ", -1, 0, 0, 0, 0, 3)");
+                excel = null;
+            }
+            catch (e) {
+                // Do nothing...
+            }
+            location.href = "main.hta?mode=noborder";
+        };
+    </script>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            text-align: center;
+        }
+    
+        a {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
