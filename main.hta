@@ -10,13 +10,50 @@
         showintaskbar="no"
     />
     <title>post journal</title>
-    <script src="./jquery-3.6.2.slim.min.js"></script>
-    <script>
-    </script>
+    <script src="./lib/jquery-3.6.2.slim.min.js"></script>
+    <script src="./lib/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap-4.5.0-dist/css/bootstrap.min.css" />
+    <style>
+        html {
+            background: rgb(11, 117, 187);
+            padding: 2px;
+        }
+        body {
+            border: none;
+            border-radius: 0;
+            background: #f3f3f3;
+            padding: 0.6rem;
+        }
+        .row-3 {
+            height: 3.9em;
+            line-height: 1.3;
+        }
+    </style>
 </head>
 
 <body>
+    <form action="">
+        <div class="form-group">
+            <input type="text" id="taskName" class="form-control" placeholder="タスク名" autofocus>
+        </div>
+        <div class="form-group">
+            <textarea id="description" class="form-control row-3" placeholder="作業内容"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea id="comment" class="form-control row-3" placeholder="所感コメント"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
     <script>
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var sh = new ActiveXObject("WScript.Shell");
+        var excel = new ActiveXObject("Excel.Application");
+        // var EXCEL_FILE = ''
+        // excel.Workbooks.open(EXCEL_FILE);
+        excel.Workbooks.close();
+        setTimeout(CollectGarbage, 1);
+        $(function() {
+        });
     </script>
 </body>
 

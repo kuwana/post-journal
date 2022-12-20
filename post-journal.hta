@@ -17,14 +17,14 @@
         navigable="yes"
     />
     <script>
-        var width = 540;
-        var height = 180;
+        var width = 600;
+        var height = 270;
         window.onload = function() {
             // ウィンドウサイズ設定
             window.resizeTo(width, height);
             window.moveTo(
                 (window.screen.width - width) / 2,
-                (window.screen.height - height) / 2
+                ((window.screen.height - height) / 2) - (height / 2)
             );
             // ドラッグ可能に
             var dflag = false;
@@ -54,7 +54,6 @@
             overflow: hidden;
             text-align: center;
         }
-    
         a {
             color: #f0f0f0;
         }
